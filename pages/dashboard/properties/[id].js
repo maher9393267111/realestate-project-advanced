@@ -88,40 +88,40 @@ const UpdatePropertyPage = ({ id }) => {
     }, [id]);
 
     useEffect(() => {
-        setName(property.name);
-        setDescription(property.description);
-        setPropertyId(property.propertyId);
-        setPrice(property.price);
-        setType({ label: property.type, value: property.type });
-        setCategory({ label: property.category, value: property.category });
+        setName(property?.name);
+        setDescription(property?.description);
+        setPropertyId(property?.propertyId);
+        setPrice(property?.price);
+        setType({ label: property?.type, value: property?.type });
+        setCategory({ label: property?.category, value: property?.category });
 
         setDetails({
-            areaSqM: property.details?.areaSqM,
-            beds: property.details?.beds,
-            baths: property.details?.baths,
+            areaSqM: property?.details?.areaSqM,
+            beds: property?.details?.beds,
+            baths: property?.details?.baths,
         });
-        setAddress(property.address);
+        setAddress(property?.address);
         setFeatures({
-            ac: property.features?.ac,
-            balcony: property.features?.balcony,
-            tv: property.features?.tv,
-            internet: property.features?.internet,
-            pet: property.features?.pet,
-            bathtub: property.features?.bathtub,
+            ac: property?.features?.ac,
+            balcony: property?.features?.balcony,
+            tv: property?.features?.tv,
+            internet: property?.features?.internet,
+            pet: property?.features?.pet,
+            bathtub: property?.features?.bathtub,
         });
         setServices({
-            security: property.services?.security,
-            cctv: property.services?.cctv,
-            elevator: property.services?.elevator,
-            pool: property.services?.pool,
-            gym: property.services?.gym,
-            parking: property.services?.parking,
-            garden: property.services?.garden,
+            security: property?.services?.security,
+            cctv: property?.services?.cctv,
+            elevator: property?.services?.elevator,
+            pool: property?.services?.pool,
+            gym: property?.services?.gym,
+            parking: property?.services?.parking,
+            garden: property?.services?.garden,
         });
-        setImages(property.images);
-        setImagesPreview(property.images);
-        setIsActive(property.isActive);
-        setIsFeatured(property.isFeatured);
+        setImages(property?.images);
+        setImagesPreview(property?.images);
+        setIsActive(property?.isActive);
+        setIsFeatured(property?.isFeatured);
     }, [property]);
 
     useEffect(() => {

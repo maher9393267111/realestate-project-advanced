@@ -3,14 +3,14 @@ import Link from "next/link";
 
 const FeaturedPropertyCard = ({ property }) => {
     return (
-        <Link href={`/properties/${property._id}`}>
+        <Link href={`/properties/${property?._id}`}>
             <div className="w-full bg-white border rounded-lg overflow-hidden shadow-md">
                 <div className="w-full aspect-[16/9] relative flex items-center">
                     <div className="absolute z-[1] right-0 bottom-0 left-0 w-full h-[60%] overflow-hidden bg-gradient-to-t from-black/80 to-white/0 opacity-100" />
                     <Image
                         alt="property-image"
                         src={
-                            property.images[0]?.url ||
+                            property?.images[0]?.url ||
                             `https://dummyimage.com/261x261`
                         }
                         draggable="false"
@@ -23,23 +23,23 @@ const FeaturedPropertyCard = ({ property }) => {
                                 "py-1.5 px-2.5 leading-none text-sm text-white font-semibold rounded bg-[#38a169]/90"
                             }
                         >
-                            {property.category}
+                            {property?.category}
                         </div>
                         <div
                             className={
                                 "py-1.5 px-2.5 leading-none text-sm text-white font-semibold rounded" +
-                                (property.type === "Rent"
+                                (property?.type === "Rent"
                                     ? " bg-orange-500/90"
                                     : " bg-red-500/90")
                             }
                         >
-                            {property.type}
+                            {property?.type}
                         </div>
                     </div>
                     <div className="flex absolute bottom-3 left-3 gap-x-2 z-[1]">
                         <div className="text-2xl text-white font-medium">
-                            ฿{property.price.toLocaleString()}
-                            {property.type === "Rent" ? (
+                            ฿{property?.price.toLocaleString()}
+                            {property?.type === "Rent" ? (
                                 <span className="text-sm font-normal"> / month</span>
                             ) : null}
                         </div>
@@ -57,24 +57,24 @@ const FeaturedPropertyCard = ({ property }) => {
                         {property?.name}
                     </h1>
                     <p className="text-sm text-gray-500">
-                        {property.address}
+                        {property?.address}
                     </p>
                     <div className="flex flex-row items-center mt-4 gap-4 divide-x">
                         <div className="text-base">
                             <span className="mr-1">
-                                {property.details?.beds}
+                                {property?.details?.beds}
                             </span>
                             Bed
                         </div>
                         <div className="text-base pl-4">
                             <span className="mr-1">
-                                {property.details?.baths}
+                                {property?.details?.baths}
                             </span>
                             Bath
                         </div>
                         <div className="text-base pl-4">
                             <span className="mr-1">
-                                {property.details?.areaSqM}
+                                {property?.details?.areaSqM}
                             </span>
                             sqm
                         </div>

@@ -33,8 +33,8 @@ const PropertyDetails = ({ property }) => {
     return (
         <Layout>
             <Head>
-                <title>{property.name} - Find CM Property</title>
-                <meta name="description" content={property.description} />
+                <title>{property?.name} - Find CM Property</title>
+                <meta name="description" content={property?.description} />
             </Head>
             <section id="main" className="flex justify-center items-center">
                 <div className="container">
@@ -51,7 +51,7 @@ const PropertyDetails = ({ property }) => {
                                     }}
                                 >
                                     <SplideTrack>
-                                        {property.images?.map((image, i) => (
+                                        {property?.images?.map((image, i) => (
                                             <SplideSlide key={i}>
                                                 <div className="w-full aspect-[16/9] relative flex items-center">
                                                     <Image
@@ -79,23 +79,23 @@ const PropertyDetails = ({ property }) => {
                                                     "py-1.5 px-2.5 leading-none text-sm text-white font-semibold rounded bg-[#38a169]/90"
                                                 }
                                             >
-                                                {property.category}
+                                                {property?.category}
                                             </div>
                                             <div
                                                 className={
                                                     "py-1.5 px-2.5 leading-none text-sm text-white font-semibold rounded" +
-                                                    (property.type === "Rent"
+                                                    (property?.type === "Rent"
                                                         ? " bg-orange-500/90"
                                                         : " bg-red-500/90")
                                                 }
                                             >
-                                                {property.type}
+                                                {property?.type}
                                             </div>
                                         </div>
                                         {user?.role === "admin" && (
                                             <Link
                                                 scroll={false}
-                                                href={`/dashboard/properties/${property._id}`}
+                                                href={`/dashboard/properties/${property?._id}`}
                                                 className="font-medium hover:text-primary"
                                             >
                                                 Edit
@@ -108,8 +108,8 @@ const PropertyDetails = ({ property }) => {
                                             {property?.name}
                                         </h1>
                                         <div className="text-3xl font-medium md:w-1/3 text-end">
-                                            ฿{property.price.toLocaleString()}
-                                            {property.type === "Rent" ? (
+                                            ฿{property?.price.toLocaleString()}
+                                            {property?.type === "Rent" ? (
                                                 <span className="text-base">
                                                     {" "}
                                                     / month
@@ -121,7 +121,7 @@ const PropertyDetails = ({ property }) => {
                                     <div className="flex items-center gap-2 mb-4">
                                         <FaMapMarkerAlt />
                                         <div className="text-lg">
-                                            {property.address}
+                                            {property?.address}
                                         </div>
                                     </div>
 
@@ -130,7 +130,7 @@ const PropertyDetails = ({ property }) => {
                                             <FaBed />
                                             <div className="text-lg">
                                                 <span className="mr-1 font-semibold">
-                                                    {property.details?.beds}
+                                                    {property?.details?.beds}
                                                 </span>
                                                 bed
                                             </div>
@@ -139,7 +139,7 @@ const PropertyDetails = ({ property }) => {
                                             <FaBath />
                                             <div className="text-lg">
                                                 <span className="mr-1 font-semibold">
-                                                    {property.details?.baths}
+                                                    {property?.details?.baths}
                                                 </span>
                                                 bath
                                             </div>
@@ -148,7 +148,7 @@ const PropertyDetails = ({ property }) => {
                                             <FaExpand />
                                             <div className="text-lg">
                                                 <span className="mr-1 font-semibold">
-                                                    {property.details?.areaSqM}
+                                                    {property?.details?.areaSqM}
                                                 </span>
                                                 sqm
                                             </div>
@@ -166,7 +166,7 @@ const PropertyDetails = ({ property }) => {
                                                 <span className="text-black font-medium">
                                                     Property ID :
                                                 </span>{" "}
-                                                {property.propertyId}
+                                                {property?.propertyId}
                                             </p>
                                         </div>
                                         <div className="col-span-1">
@@ -174,7 +174,7 @@ const PropertyDetails = ({ property }) => {
                                                 <span className="text-black font-medium">
                                                     Status :
                                                 </span>{" "}
-                                                For {property.type}
+                                                For {property?.type}
                                             </p>
                                         </div>
                                         <div className="col-span-1">
@@ -182,7 +182,7 @@ const PropertyDetails = ({ property }) => {
                                                 <span className="text-black font-medium">
                                                     Type :
                                                 </span>{" "}
-                                                {property.category}
+                                                {property?.category}
                                             </p>
                                         </div>
                                         <div className="col-span-1">
@@ -190,7 +190,7 @@ const PropertyDetails = ({ property }) => {
                                                 <span className="text-black font-medium">
                                                     Property Size :
                                                 </span>{" "}
-                                                {property.details.areaSqM} sqm
+                                                {property?.details.areaSqM} sqm
                                             </p>
                                         </div>
                                         <div className="col-span-1">
@@ -198,7 +198,7 @@ const PropertyDetails = ({ property }) => {
                                                 <span className="text-black font-medium">
                                                     Bedroom :
                                                 </span>{" "}
-                                                {property.details.beds}
+                                                {property?.details.beds}
                                             </p>
                                         </div>
                                         <div className="col-span-1">
@@ -206,7 +206,7 @@ const PropertyDetails = ({ property }) => {
                                                 <span className="text-black font-medium">
                                                     Bathroom :
                                                 </span>{" "}
-                                                {property.details.baths}
+                                                {property?.details.baths}
                                             </p>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@ const PropertyDetails = ({ property }) => {
                                     <div
                                         className="text-gray-800"
                                         dangerouslySetInnerHTML={{
-                                            __html: property.description,
+                                            __html: property?.description,
                                         }}
                                     />
                                 </div>
@@ -232,7 +232,7 @@ const PropertyDetails = ({ property }) => {
                                         Features
                                     </h2>
                                     <div className="grid grid-cols-2 md:grid-cols-3 text-gray-800 gap-y-2">
-                                        {property.features.balcony && (
+                                        {property?.features.balcony && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <MdBalcony
                                                     color="black"
@@ -243,7 +243,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.features.ac && (
+                                        {property?.features.ac && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <svg
                                                     fill="#000000"
@@ -263,7 +263,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.features.tv && (
+                                        {property?.features.tv && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <FaTv
                                                     color="black"
@@ -274,7 +274,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.features.internet && (
+                                        {property?.features.internet && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <FaWifi
                                                     color="black"
@@ -285,7 +285,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.features.pet && (
+                                        {property?.features.pet && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <MdOutlinePets
                                                     color="black"
@@ -296,7 +296,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.features.bathtub && (
+                                        {property?.features.bathtub && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <FaBath
                                                     color="black"
@@ -318,7 +318,7 @@ const PropertyDetails = ({ property }) => {
                                         Community Features
                                     </h2>
                                     <div className="grid grid-cols-2 md:grid-cols-3 text-gray-800 gap-y-2">
-                                        {property.services.security && (
+                                        {property?.services.security && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <MdOutlineSecurity
                                                     color="black"
@@ -329,7 +329,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.services.cctv && (
+                                        {property?.services.cctv && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <BiCctv
                                                     color="black"
@@ -340,7 +340,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.services.elevator && (
+                                        {property?.services.elevator && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <TbElevator
                                                     color="black"
@@ -351,7 +351,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.services.parking && (
+                                        {property?.services.parking && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <RiParkingBoxLine
                                                     color="black"
@@ -362,7 +362,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.services.pool && (
+                                        {property?.services.pool && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <MdOutlinePool
                                                     color="black"
@@ -373,7 +373,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.services.gym && (
+                                        {property?.services.gym && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <BiDumbbell
                                                     color="black"
@@ -384,7 +384,7 @@ const PropertyDetails = ({ property }) => {
                                                 </div>
                                             </div>
                                         )}
-                                        {property.services.garden && (
+                                        {property?.services.garden && (
                                             <div className="col-span-1 flex items-center gap-2">
                                                 <GiTreeBranch
                                                     color="black"
@@ -398,7 +398,7 @@ const PropertyDetails = ({ property }) => {
                                     </div>
                                 </div>
 
-                                {property.coordinate && (
+                                {property?.coordinate && (
                                     <div
                                         id="map-location"
                                         className="py-8 border-t"
