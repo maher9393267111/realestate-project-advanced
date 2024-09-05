@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema(
         avatar: {
             type: String,
             default:
-                "https://cdn.discordapp.com/attachments/717327142978977834/1074905721411469413/avatar.png",
+                "https://static.thenounproject.com/png/4595376-200.png",
         },
         role: {
             type: String,
