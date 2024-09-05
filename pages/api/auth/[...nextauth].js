@@ -1,3 +1,98 @@
+// import NextAuth from "next-auth";
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import dbConnect from "@/lib/db-connect";
+// import User from "@/models/user";
+
+// // Ensure database connection
+// dbConnect();
+
+// export const authOptions = {
+//   session: {
+//     jwt: true,
+//   },
+//   providers: [
+//     CredentialsProvider({
+//       async authorize(credentials) {
+//         dbConnect();
+
+//         const { username, password } = credentials;
+
+//         // Check if username and password are entered
+//         if (!username || !password) {
+//           throw new Error('Please enter username and password');
+//         }
+
+//         // Find user in the database
+//         const user = await User.findOne({ username }).select('+password');
+
+//         if (!user) {
+//           throw new Error('Invalid Username or Password');
+//         }
+
+//         // Check if password is correct
+//         const isPasswordMatched = await user.comparePassword(password);
+
+//         if (!isPasswordMatched) {
+//           throw new Error('Invalid Username or Password');
+//         }
+
+//         return {
+//           id: user._id,
+//           username: user.username,
+//           email: user.email,
+//           role: user.role,
+//           avatar: user.avatar,
+//           timeStamp: {
+//             createdAt: user.createdAt,
+//             updatedAt: user.updatedAt,
+//           },
+//         };
+//       },
+//     }),
+//   ],
+//   secret: process.env.NEXTAUTH_SECRET,
+//   callbacks: {
+//     jwt: async ({ token, user }) => {
+//       if (user) {
+//         token.user = {
+//           id: user.id,
+//           username: user.username,
+//           email: user.email,
+//           role: user.role,
+//           avatar: user.avatar,
+//           timeStamp: {
+//             createdAt: user.createdAt,
+//             updatedAt: user.updatedAt,
+//           },
+//         };
+//       }
+//       return token; // Return the entire token object
+//     },
+//     session: async ({ session, token }) => {
+//       session.user = token.user; // Attach token user data to session
+//       return session; // Return the session object
+//     },
+//   },
+// };
+
+// // Export the NextAuth handler
+// export default async function auth(req, res) {
+//   return NextAuth(req, res, authOptions); // Pass the options directly
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import NextAuth from "next-auth";
 import CredentialsProviders from "next-auth/providers/credentials";
 import dbConnect from "@/lib/db-connect";
@@ -49,8 +144,7 @@ export const authOptions = (req) => {
                             },
                         };
                     } catch (error) {
-                        console.error("Authorization error:", error.message); // Log the error message
-                        throw new Error("Authorization failed.");
+                        throw new Error(error);
                     }
                 },
             }),
@@ -95,7 +189,7 @@ export const authOptions = (req) => {
                 return Promise.resolve(session);
             },
         },
-        debug: process.env.NODE_ENV === "production",
+        debug: process.env.NODE_ENV === "development",
     };
 };
 

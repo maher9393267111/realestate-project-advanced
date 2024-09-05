@@ -5,7 +5,7 @@ import catchAsyncErrors from "./catch-async-errors";
 export const isAuthenticatedUser = (handler) =>
     catchAsyncErrors(async (req, res) => {
         const session = await getServerSession(req, res, authOptions(req));
-
+console.log("SESSION---><🔶️🔷️🔶️🔷️🔶️🔶️🔷️🔶️🔷️🔶️🔶️🔷️🔶️🔷️🔶️" , session)
         if (!session) {
             return res.status(401).json({
                 success: false,
@@ -13,15 +13,19 @@ export const isAuthenticatedUser = (handler) =>
             });
         }
 
-        req.user = session.user;
+
+        req.user = session?.user;
 
         return handler(req, res);
     });
+
+    
 
 export const authorizeRoles = (handler, ...roles) => {
     return async (req, res) => {
         const { user } = await getServerSession(req, res, authOptions(req));
 
+        console.log("USER🔶️🔷️🔶️🔷️🔶️🔶️🔷️🔶️🔷️🔶️🔶️🔷️🔶️🔷️🔶️" , user)
         if (!roles.includes(user?.role)) {
             return res.status(403).json({
                 success: false,
