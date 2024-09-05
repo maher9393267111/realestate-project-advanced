@@ -49,7 +49,8 @@ export const authOptions = (req) => {
                             },
                         };
                     } catch (error) {
-                        throw new Error(error);
+                        console.error("Authorization error:", error.message); // Log the error message
+                        throw new Error("Authorization failed.");
                     }
                 },
             }),
@@ -94,7 +95,7 @@ export const authOptions = (req) => {
                 return Promise.resolve(session);
             },
         },
-        debug: process.env.NODE_ENV === "development",
+        debug: process.env.NODE_ENV === "production",
     };
 };
 
